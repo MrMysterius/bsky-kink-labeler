@@ -1,8 +1,8 @@
-import { CommitCreateEvent, Jetstream } from '@skyware/jetstream';
-import fs from 'node:fs';
-
 import { CURSOR_UPDATE_INTERVAL, DID, FIREHOSE_URL, HOST, METRICS_PORT, PORT, WANTED_COLLECTION } from './config.js';
+import { CommitCreateEvent, Jetstream } from '@skyware/jetstream';
 import { label, labelerServer } from './label.js';
+
+import fs from 'node:fs';
 import logger from './logger.js';
 import { startMetricsServer } from './metrics.js';
 
@@ -29,7 +29,7 @@ try {
 }
 
 const jetstream = new Jetstream({
-  wantedCollections: [WANTED_COLLECTION],
+  wantedCollections: WANTED_COLLECTION,
   endpoint: FIREHOSE_URL,
   cursor: cursor,
 });
@@ -57,12 +57,26 @@ jetstream.on('error', (error) => {
   logger.error(`Jetstream error: ${error.message}`);
 });
 
-jetstream.onCreate(WANTED_COLLECTION, (event: CommitCreateEvent<typeof WANTED_COLLECTION>) => {
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (event.commit?.record?.subject?.uri?.includes(DID)) {
-    label(event.did, event.commit.record.subject.uri.split('/').pop()!);
+for (const WANTED of WANTED_COLLECTION) {
+  switch (WANTED) {
+    case "app.bsky.feed.like":
+      jetstream.onCreate(WANTED, (event: CommitCreateEvent<typeof WANTED>) => {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (event.commit?.record?.subject?.uri?.includes(DID)) {
+          label(event.did, event.commit.record.subject.uri.split('/').pop()!);
+        }
+      });
+      break;
+    case "app.bsky.feed.post":
+      jetstream.onCreate(WANTED, (event: CommitCreateEvent<typeof WANTED>) => {
+        // // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        // if (event.commit?.record?.subject?.uri?.includes(DID)) {
+        //   label(event.did, event.commit.record.subject.uri.split('/').pop()!);
+        // }
+      });
+      break;
   }
-});
+}
 
 const metricsServer = startMetricsServer(METRICS_PORT);
 
