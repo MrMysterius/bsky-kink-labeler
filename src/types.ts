@@ -4,4 +4,5 @@ export interface Label {
   rkey: string;
   identifier: string;
   locales: LabelValueDefinitionStrings[];
+  word_flags: string[];
 }

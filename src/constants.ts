@@ -9,5 +9,6 @@ export const LABELS: Label[] = [
     locales: [
       { lang: 'en', name: 'Test', description: 'Test'},
     ],
+    word_flags: ["test-flag"]
   },
 ];
