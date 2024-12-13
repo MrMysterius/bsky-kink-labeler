@@ -15,10 +15,10 @@ const labelDefinitions: ComAtprotoLabelDefs.LabelValueDefinition[] = [];
 for (const label of LABELS) {
   const labelValueDefinition: ComAtprotoLabelDefs.LabelValueDefinition = {
     identifier: label.identifier,
-    severity: 'inform',
-    blurs: 'content',
-    defaultSetting: 'warn',
-    adultOnly: false,
+    severity: label.severity,
+    blurs: label.blurs,
+    defaultSetting: label.defaultSetting,
+    adultOnly: label.adultOnly,
     locales: label.locales,
   };
 
