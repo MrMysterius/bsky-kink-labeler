@@ -109,5 +109,5 @@ export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
 
   if (apply_labels.length == 0) return;
 
-  labelerServer.createLabels({ uri: event.did }, { create: apply_labels });
+  labelerServer.createLabels({ uri: event.did, cid: event.commit.cid }, { create: apply_labels });
 }
