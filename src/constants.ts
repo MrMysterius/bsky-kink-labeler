@@ -39,9 +39,9 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-penis',
     locales: [
-      { lang: 'en', name: '[BODYPART] Penis', description: 'Filtered Words: cock dick gock boyclit penis'},
+      { lang: 'en', name: '[BODYPART] Penis', description: 'Filtered Words: cock dick gock boyclit penis frot'},
     ],
-    word_flags: ["cock", "dick", "gock", "boyclit", "penis"],
+    word_flags: ["cock", "dick", "gock", "boyclit", "penis", "frot"],
     severity: "inform",
     blurs: "media",
     defaultSetting: "ignore",
