@@ -13,6 +13,18 @@ export const LABELS: Label[] = [
   // },
   {
     rkey: 'insert-rkey-here',
+    identifier: 'kink-label-suggestive',
+    locales: [
+      { lang: 'en', name: '[GENERAL] Lewd/Nude', description: 'Filtered Words: lewd nude naked suggestive underwear lingerie'},
+    ],
+    word_flags: ["lewd", "nude", "naked", "suggestive", "lingerie"],
+    severity: "inform",
+    blurs: "content",
+    defaultSetting: "ignore",
+    adultOnly: true
+  },
+  {
+    rkey: 'insert-rkey-here',
     identifier: 'kink-label-nsfw',
     locales: [
       { lang: 'en', name: '[GENERAL] NSFW', description: 'Filtered Words: nsfw notsafeforwork porn goon'},
@@ -97,11 +109,47 @@ export const LABELS: Label[] = [
   },
   {
     rkey: 'insert-rkey-here',
+    identifier: 'kink-label-armpits',
+    locales: [
+      { lang: 'en', name: '[BODYPART] Armpits', description: 'Filtered Words: armpits pits underarm armhole'},
+    ],
+    word_flags: ["armpits", "pits", "underarm", "armhole"],
+    severity: "inform",
+    blurs: "media",
+    defaultSetting: "ignore",
+    adultOnly: true
+  },
+  {
+    rkey: 'insert-rkey-here',
+    identifier: 'kink-label-bodyhair',
+    locales: [
+      { lang: 'en', name: '[BODYPART] Bodyhair', description: 'Filtered Words: hairy bush'},
+    ],
+    word_flags: ["hairy", "bush"],
+    severity: "inform",
+    blurs: "media",
+    defaultSetting: "ignore",
+    adultOnly: true
+  },
+  {
+    rkey: 'insert-rkey-here',
     identifier: 'kink-label-bdsm',
     locales: [
       { lang: 'en', name: '[KINK] BDSM', description: 'Filter Words: bdsm bondage submission masochism sadomaso torture slave master'},
     ],
     word_flags: ["bdsm", "bondage", "submission", "masochism", "sadomaso", "torture", "slave", "master"],
+    severity: "inform",
+    blurs: "content",
+    defaultSetting: "warn",
+    adultOnly: true
+  },
+  {
+    rkey: 'insert-rkey-here',
+    identifier: 'kink-label-pain-light',
+    locales: [
+      { lang: 'en', name: '[KINK] Light Pain', description: 'Filter Words: spank slap pinch scratch bite'},
+    ],
+    word_flags: ["spank", "slap", "pinch", "scratch", "bite"],
     severity: "inform",
     blurs: "content",
     defaultSetting: "warn",
