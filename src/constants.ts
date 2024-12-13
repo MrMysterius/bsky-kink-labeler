@@ -231,7 +231,7 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-oral',
     locales: [
-      { lang: 'en', name: '[KINK] Furries', description: 'Filter Words: oral mouth throat'},
+      { lang: 'en', name: '[KINK] Oral', description: 'Filter Words: oral mouth throat'},
     ],
     word_flags: ["oral", "mouth", "throat"],
     severity: "inform",
