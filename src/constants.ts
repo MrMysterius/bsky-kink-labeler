@@ -255,7 +255,7 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-abdl',
     locales: [
-      { lang: 'en', name: '[KINK] ABDL', description: 'Filter Words: abdl diaper "adult baby" baby "age play"'},
+      { lang: 'en', name: '[KINK] ABDL', description: 'Filter Words: abdl diaper adult_baby baby age_play'},
     ],
     word_flags: ["abdl", "diaper", "adult baby", "baby", "age play"],
     severity: "inform",
@@ -315,7 +315,7 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-petplay',
     locales: [
-      { lang: 'en', name: '[KINK] Petplay', description: 'Filter Words: pet fempup leash collar kennel "dog bowl"'},
+      { lang: 'en', name: '[KINK] Petplay', description: 'Filter Words: pet fempup leash collar kennel dog_bowl'},
     ],
     word_flags: ["pet", "fempup", "leash", "collar", "cage", "kennel", "dog bowl"],
     severity: "inform",
