@@ -267,9 +267,9 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-petplay',
     locales: [
-      { lang: 'en', name: '[KINK] Petplay', description: 'Filter Words: pet fempup'},
+      { lang: 'en', name: '[KINK] Petplay', description: 'Filter Words: pet fempup leash collar kennel "dog bowl"'},
     ],
-    word_flags: ["pet", "fempup"],
+    word_flags: ["pet", "fempup", "leash", "collar", "cage", "kennel", "dog bowl"],
     severity: "inform",
     blurs: "content",
     defaultSetting: "warn",
