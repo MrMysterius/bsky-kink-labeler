@@ -5,8 +5,9 @@ export interface Label {
   identifier: string;
   locales: LabelValueDefinitionStrings[];
   word_flags: string[];
-  severity: "inform" | "alert" | "none";
-  blurs: "content" | "media" | "none";
-  defaultSetting: "warn" | "ignore" | "hide";
+  severity: 'inform' | 'alert' | 'none';
+  blurs: 'content' | 'media' | 'none';
+  defaultSetting: 'warn' | 'ignore' | 'hide';
   adultOnly: boolean;
+  required_labels?: string[];
 }

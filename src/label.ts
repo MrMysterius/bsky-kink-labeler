@@ -110,6 +110,22 @@ export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
     }
   }
 
+  for (let i = 0; i < apply_labels.length; i++) {
+    const LABEL = LABELS.find((l) => l.identifier == apply_labels[i]);
+    if (!LABEL) continue;
+
+    if (
+      (LABEL.required_labels &&
+        apply_labels.filter((l) => LABEL.required_labels?.includes(l)).length == LABEL.required_labels.length) ||
+      !LABEL.required_labels
+    ) {
+      continue;
+    }
+
+    apply_labels.splice(i, 1);
+    i--;
+  }
+
   if (apply_labels.length == 0) return;
 
   console.log('LABELS APPLIED:', `at://${event.did}/${event.commit.record.$type}/${event.commit.rkey}`, apply_labels);
