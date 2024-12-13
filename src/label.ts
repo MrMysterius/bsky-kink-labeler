@@ -92,16 +92,19 @@ export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
 
   for (const LABEL of LABELS) {
     if (
-      LABEL.word_flags.find(
-        (w) =>
-          event.commit.record.text.includes(w) ||
-          (event.commit.record.embed?.$type == 'app.bsky.embed.images' &&
-            event.commit.record.embed.images
-              .map((i) => i.alt)
-              .join(' ')
-              .includes(w)) ||
-          (event.commit.record.embed?.$type == 'app.bsky.embed.video' && event.commit.record.embed.alt?.includes(w)),
-      )
+      LABEL.word_flags
+        .map((w) => w.toLowerCase())
+        .find(
+          (w) =>
+            event.commit.record.text.toLowerCase().includes(w) ||
+            (event.commit.record.embed?.$type == 'app.bsky.embed.images' &&
+              event.commit.record.embed.images
+                .map((i) => i.alt.toLowerCase())
+                .join(' ')
+                .includes(w)) ||
+            (event.commit.record.embed?.$type == 'app.bsky.embed.video' &&
+              event.commit.record.embed.alt?.toLowerCase().includes(w)),
+        )
     ) {
       apply_labels.push(LABEL.identifier);
     }
@@ -109,5 +112,9 @@ export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
 
   if (apply_labels.length == 0) return;
 
-  labelerServer.createLabels({ uri: event.did, cid: event.commit.cid }, { create: apply_labels });
+  console.log('LABELS APPLIED:', `at://${event.did}/${event.commit.record.$type}/${event.commit.rkey}`, apply_labels);
+  labelerServer.createLabels(
+    { uri: `at://${event.did}/${event.commit.record.$type}/${event.commit.rkey}` },
+    { create: apply_labels },
+  );
 }
