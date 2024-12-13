@@ -19,4 +19,12 @@ export const LABELS: Label[] = [
     ],
     word_flags: ["bdsm", "bondage", "submission", "masochism", "sadomaso", "torture", "slave", "master"]
   },
+  {
+    rkey: 'insert-rkey-here',
+    identifier: 'kink-label-penis',
+    locales: [
+      { lang: 'en', name: 'Penis, Cocks, Dicks...', description: 'Filter for everything that includes the words: cock dick gock boyclit penis'},
+    ],
+    word_flags: ["cock", "dick", "gock", "boyclit", "penis"]
+  },
 ];
