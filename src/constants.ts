@@ -3,12 +3,20 @@ import { Label } from './types.js';
 export const DELETE = 'insert-rkey-of-delete-post-here';
 export const LABEL_LIMIT = 1;
 export const LABELS: Label[] = [
+  // {
+  //   rkey: 'insert-rkey-here',
+  //   identifier: 'test',
+  //   locales: [
+  //     { lang: 'en', name: 'Test', description: 'Test'},
+  //   ],
+  //   word_flags: ["test-flag"]
+  // },
   {
     rkey: 'insert-rkey-here',
-    identifier: 'test',
+    identifier: 'kink-label-bdsm',
     locales: [
-      { lang: 'en', name: 'Test', description: 'Test'},
+      { lang: 'en', name: 'BDSM', description: 'Filter for everything that includes the words: bdsm bondage submission masochism sadomaso torture slave master'},
     ],
-    word_flags: ["test-flag"]
+    word_flags: ["bdsm", "bondage", "submission", "masochism", "sadomaso", "torture", "slave", "master"]
   },
 ];
