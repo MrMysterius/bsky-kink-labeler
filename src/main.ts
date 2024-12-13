@@ -1,8 +1,8 @@
-import { CURSOR_UPDATE_INTERVAL, DID, FIREHOSE_URL, HOST, METRICS_PORT, PORT, WANTED_COLLECTION } from './config.js';
 import { CommitCreateEvent, Jetstream } from '@skyware/jetstream';
-import { label, labelerServer } from './label.js';
-
 import fs from 'node:fs';
+
+import { CURSOR_UPDATE_INTERVAL, DID, FIREHOSE_URL, HOST, METRICS_PORT, PORT, WANTED_COLLECTION } from './config.js';
+import { label, labelPost, labelerServer } from './label.js';
 import logger from './logger.js';
 import { startMetricsServer } from './metrics.js';
 
@@ -59,7 +59,7 @@ jetstream.on('error', (error) => {
 
 for (const WANTED of WANTED_COLLECTION) {
   switch (WANTED) {
-    case "app.bsky.feed.like":
+    case 'app.bsky.feed.like':
       jetstream.onCreate(WANTED, (event: CommitCreateEvent<typeof WANTED>) => {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (event.commit?.record?.subject?.uri?.includes(DID)) {
@@ -67,8 +67,13 @@ for (const WANTED of WANTED_COLLECTION) {
         }
       });
       break;
-    case "app.bsky.feed.post":
+    case 'app.bsky.feed.post':
       jetstream.onCreate(WANTED, (event: CommitCreateEvent<typeof WANTED>) => {
+        try {
+          labelPost(event);
+        } catch (e) {
+          console.log(e);
+        }
         // // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         // if (event.commit?.record?.subject?.uri?.includes(DID)) {
         //   label(event.did, event.commit.record.subject.uri.split('/').pop()!);

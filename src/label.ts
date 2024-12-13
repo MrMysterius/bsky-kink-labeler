@@ -1,4 +1,5 @@
 import { ComAtprotoLabelDefs } from '@atcute/client/lexicons';
+import { CommitCreateEvent } from '@skyware/jetstream';
 import { LabelerServer } from '@skyware/labeler';
 
 import { DID, SIGNING_KEY } from './config.js';
@@ -84,4 +85,29 @@ function addOrUpdateLabel(did: string, rkey: string, labels: Set<string>) {
   } catch (error) {
     logger.error(`Error adding new label: ${error}`);
   }
+}
+
+export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
+  const apply_labels: string[] = [];
+
+  for (const LABEL of LABELS) {
+    if (
+      LABEL.word_flags.find(
+        (w) =>
+          event.commit.record.text.includes(w) ||
+          (event.commit.record.embed?.$type == 'app.bsky.embed.images' &&
+            event.commit.record.embed.images
+              .map((i) => i.alt)
+              .join(' ')
+              .includes(w)) ||
+          (event.commit.record.embed?.$type == 'app.bsky.embed.video' && event.commit.record.embed.alt?.includes(w)),
+      )
+    ) {
+      apply_labels.push(LABEL.identifier);
+    }
+  }
+
+  if (apply_labels.length == 0) return;
+
+  labelerServer.createLabels({ uri: event.did }, { create: apply_labels });
 }
