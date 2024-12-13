@@ -15,9 +15,9 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-suggestive',
     locales: [
-      { lang: 'en', name: '[GENERAL] Lewd/Nude', description: 'Filtered Words: lewd nude naked suggestive underwear lingerie'},
+      { lang: 'en', name: '[GENERAL] Lewd/Nude', description: 'Filtered Words: lewd nude naked suggestive underwear lingerie horny'},
     ],
-    word_flags: ["lewd", "nude", "naked", "suggestive", "lingerie"],
+    word_flags: ["lewd", "nude", "naked", "suggestive", "lingerie", "horny"],
     severity: "inform",
     blurs: "content",
     defaultSetting: "ignore",
@@ -27,9 +27,9 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-nsfw',
     locales: [
-      { lang: 'en', name: '[GENERAL] NSFW', description: 'Filtered Words: nsfw notsafeforwork porn goon'},
+      { lang: 'en', name: '[GENERAL] NSFW', description: 'Filtered Words: nsfw notsafeforwork porn goon onlyfans'},
     ],
-    word_flags: ["nsfw", "notsafeforwork", "porn", "goon"],
+    word_flags: ["nsfw", "notsafeforwork", "porn", "goon", "onlyfans"],
     severity: "inform",
     blurs: "content",
     defaultSetting: "ignore",
@@ -39,9 +39,9 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-penis',
     locales: [
-      { lang: 'en', name: '[BODYPART] Penis', description: 'Filtered Words: cock dick gock boyclit penis frot'},
+      { lang: 'en', name: '[BODYPART] Penis', description: 'Filtered Words: cock dick gock boyclit penis frot balls testicles'},
     ],
-    word_flags: ["cock", "dick", "gock", "boyclit", "penis", "frot"],
+    word_flags: ["cock", "dick", "gock", "boyclit", "penis", "frot", "balls", "testicles"],
     severity: "inform",
     blurs: "media",
     defaultSetting: "ignore",
@@ -75,9 +75,9 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-ass',
     locales: [
-      { lang: 'en', name: '[BODYPART] Ass', description: 'Filtered Words: ass booty buttocks cheeks'},
+      { lang: 'en', name: '[BODYPART] Ass', description: 'Filtered Words: ass booty buttocks cheeks bussy boypussy'},
     ],
-    word_flags: ["ass", "booty", "buttocks", "cheeks"],
+    word_flags: ["ass", "booty", "buttocks", "cheeks", "bussy", "boypussy"],
     severity: "inform",
     blurs: "media",
     defaultSetting: "ignore",
@@ -378,6 +378,30 @@ export const LABELS: Label[] = [
       { lang: 'en', name: '[KINK] Findom', description: 'Filter Words: findom tribute paypig'},
     ],
     word_flags: ["findom", "tribute", "paypig"],
+    severity: "inform",
+    blurs: "content",
+    defaultSetting: "warn",
+    adultOnly: true
+  },
+  {
+    rkey: 'insert-rkey-here',
+    identifier: 'kink-label-feminization',
+    locales: [
+      { lang: 'en', name: '[KINK] Feminization', description: 'Filter Words: feminization bimbo sissy sissies'},
+    ],
+    word_flags: ["feminization", "bimbo", "sissy", "sissies"],
+    severity: "inform",
+    blurs: "content",
+    defaultSetting: "warn",
+    adultOnly: true
+  },
+  {
+    rkey: 'insert-rkey-here',
+    identifier: 'kink-label-crossdress',
+    locales: [
+      { lang: 'en', name: '[KINK] Cosplay/Crossdress', description: 'Filter Words: femboy tomboy crossdress cosplay femboi twink trap femsky'},
+    ],
+    word_flags: ["femboy", "tomboy", "crossdress", "cosplay", "femboi", "trap", "femsky"],
     severity: "inform",
     blurs: "content",
     defaultSetting: "warn",
