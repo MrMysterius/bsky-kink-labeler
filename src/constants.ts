@@ -27,4 +27,12 @@ export const LABELS: Label[] = [
     ],
     word_flags: ["cock", "dick", "gock", "boyclit", "penis"]
   },
+  {
+    rkey: 'insert-rkey-here',
+    identifier: 'kink-label-vagina',
+    locales: [
+      { lang: 'en', name: 'Penis, Cocks, Dicks...', description: 'Filter for everything that includes the words: vagina pussy clit twat cooch'},
+    ],
+    word_flags: ["vagina", "pussy", "clit", "twat", "cooch"]
+  },
 ];
