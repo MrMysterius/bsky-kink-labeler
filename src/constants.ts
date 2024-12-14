@@ -431,13 +431,13 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-findom',
     locales: [
-      { lang: 'en', name: '[KINK] Findom', description: 'Filter Words: findom tribute paypig'},
+      { lang: 'en', name: '[KINK] Findom', description: 'Filter Words: findom paypig'},
     ],
-    word_flags: ["findom", "tribute", "paypig"],
+    word_flags: ["findom", "paypig"],
     severity: "inform",
     blurs: "content",
     defaultSetting: "warn",
-    adultOnly: true
+    adultOnly: true,
   },
   {
     rkey: 'insert-rkey-here',
