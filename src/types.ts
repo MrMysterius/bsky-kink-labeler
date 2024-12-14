@@ -10,4 +10,6 @@ export interface Label {
   defaultSetting: 'warn' | 'ignore' | 'hide';
   adultOnly: boolean;
   required_labels?: string[];
+  suggestive?: boolean;
+  nsfw?: boolean;
 }

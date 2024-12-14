@@ -89,6 +89,13 @@ function addOrUpdateLabel(did: string, rkey: string, labels: Set<string>) {
 
 export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
   const apply_labels: string[] = [];
+  let suggestive = false;
+  let nsfw = false;
+
+  if (event.commit.record.labels?.$type == 'com.atproto.label.defs#selfLabels') {
+    suggestive = true;
+    nsfw = true;
+  }
 
   for (const LABEL of LABELS) {
     if (
@@ -106,6 +113,8 @@ export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
               event.commit.record.embed.alt?.toLowerCase().includes(w)),
         )
     ) {
+      if (LABEL.identifier == 'kink-label-suggestive') suggestive = true;
+      if (LABEL.identifier == 'kink-label-nsfw') nsfw = true;
       apply_labels.push(LABEL.identifier);
     }
   }
@@ -113,6 +122,17 @@ export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
   for (let i = 0; i < apply_labels.length; i++) {
     const LABEL = LABELS.find((l) => l.identifier == apply_labels[i]);
     if (!LABEL) continue;
+
+    if (LABEL.suggestive && !suggestive) {
+      apply_labels.splice(i, 1);
+      i--;
+      continue;
+    }
+    if (LABEL.nsfw && !nsfw) {
+      apply_labels.splice(i, 1);
+      i--;
+      continue;
+    }
 
     if (
       (LABEL.required_labels &&
@@ -128,7 +148,12 @@ export function labelPost(event: CommitCreateEvent<'app.bsky.feed.post'>) {
 
   if (apply_labels.length == 0) return;
 
-  console.log('LABELS APPLIED:', `at://${event.did}/${event.commit.record.$type}/${event.commit.rkey}`, apply_labels);
+  console.log(
+    'LABELS APPLIED:',
+    event.commit.record.labels?.$type == 'com.atproto.label.defs#selfLabels',
+    `at://${event.did}/${event.commit.record.$type}/${event.commit.rkey}`,
+    apply_labels,
+  );
   labelerServer.createLabels(
     { uri: `at://${event.did}/${event.commit.record.$type}/${event.commit.rkey}` },
     { create: apply_labels },

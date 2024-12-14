@@ -59,14 +59,14 @@ jetstream.on('error', (error) => {
 
 for (const WANTED of WANTED_COLLECTION) {
   switch (WANTED) {
-    case 'app.bsky.feed.like':
-      jetstream.onCreate(WANTED, (event: CommitCreateEvent<typeof WANTED>) => {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (event.commit?.record?.subject?.uri?.includes(DID)) {
-          label(event.did, event.commit.record.subject.uri.split('/').pop()!);
-        }
-      });
-      break;
+    // case 'app.bsky.feed.like':
+    //   jetstream.onCreate(WANTED, (event: CommitCreateEvent<typeof WANTED>) => {
+    //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    //     if (event.commit?.record?.subject?.uri?.includes(DID)) {
+    //       label(event.did, event.commit.record.subject.uri.split('/').pop()!);
+    //     }
+    //   });
+    //   break;
     case 'app.bsky.feed.post':
       jetstream.onCreate(WANTED, (event: CommitCreateEvent<typeof WANTED>) => {
         try {
