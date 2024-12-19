@@ -291,9 +291,9 @@ export const LABELS: Label[] = [
     rkey: 'insert-rkey-here',
     identifier: 'kink-label-scat',
     locales: [
-      { lang: 'en', name: '⚠️ [KINK] Scat', description: 'NSFW/SUGGESTIVE + Filter Words: scat shit feces excrement'},
+      { lang: 'en', name: '⚠️ [KINK] Scat', description: 'NSFW/SUGGESTIVE + Filter Words: scat feces excrement'},
     ],
-    word_flags: ["scat", "shit", "feces", "excrement"],
+    word_flags: ["scat", "feces", "excrement"],
     severity: "alert",
     blurs: "content",
     defaultSetting: "hide",
