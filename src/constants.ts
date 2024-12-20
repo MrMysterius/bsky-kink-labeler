@@ -479,4 +479,18 @@ export const LABELS: Label[] = [
     nsfw: true,
     suggestive: true
   },
+  {
+    rkey: 'insert-rkey-here',
+    identifier: 'kink-label-pain-sounding',
+    locales: [
+      { lang: 'en', name: '⚠️ [KINK] Sounding', description: 'NSFW/SUGGESTIVE + Filter Words: sounding urethra'},
+    ],
+    word_flags: ["sounding", "urethra"],
+    severity: "alert",
+    blurs: "content",
+    defaultSetting: "warn",
+    adultOnly: true,
+    nsfw: true,
+    suggestive: true,
+  },
 ];
