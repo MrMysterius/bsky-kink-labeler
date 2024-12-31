@@ -1,0 +1,13 @@
+# Environment Files
+.env
+.env.example
+
+# Data
+labels.db
+labels.db-shm
+labels.db-wal
+cursor.txt
+
+# Node
+*.log
+node_modules/
