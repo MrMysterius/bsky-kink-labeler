@@ -5,4 +5,5 @@ services:
     volumes:
       - "./data:/app/data"
     env_file: ".env"
-    ports: "4104:4104"
+    ports:
+      - "4104:4104"
