@@ -3,10 +3,7 @@
 .env.example
 
 # Data
-labels.db
-labels.db-shm
-labels.db-wal
-cursor.txt
+data/
 
 # Node
 *.log

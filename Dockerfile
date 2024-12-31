@@ -1,6 +1,6 @@
 FROM oven/bun:alpine
 
-RUN mkdir /app
+RUN mkdir /app /app/data
 WORKDIR /app
 
 COPY package.json .

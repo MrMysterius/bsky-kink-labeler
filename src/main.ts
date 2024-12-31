@@ -15,7 +15,7 @@ function epochUsToDateTime(cursor: number): string {
 
 try {
   logger.info('Trying to read cursor from cursor.txt...');
-  cursor = Number(fs.readFileSync('cursor.txt', 'utf8'));
+  cursor = Number(fs.readFileSync('./data/cursor.txt', 'utf8'));
   logger.info(`Cursor found: ${cursor} (${epochUsToDateTime(cursor)})`);
 } catch (error) {
   if (error instanceof Error && 'code' in error && error.code === 'ENOENT') {
@@ -41,7 +41,7 @@ jetstream.on('open', () => {
   cursorUpdateInterval = setInterval(() => {
     if (jetstream.cursor) {
       logger.info(`Cursor updated to: ${jetstream.cursor} (${epochUsToDateTime(jetstream.cursor)})`);
-      fs.writeFile('cursor.txt', jetstream.cursor.toString(), (err) => {
+      fs.writeFile('./data/cursor.txt', jetstream.cursor.toString(), (err) => {
         if (err) logger.error(err);
       });
     }
@@ -98,7 +98,7 @@ jetstream.start();
 function shutdown() {
   try {
     logger.info('Shutting down gracefully...');
-    fs.writeFileSync('cursor.txt', jetstream.cursor!.toString(), 'utf8');
+    fs.writeFileSync('./data/cursor.txt', jetstream.cursor!.toString(), 'utf8');
     jetstream.close();
     labelerServer.stop();
     metricsServer.close();

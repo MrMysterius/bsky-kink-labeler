@@ -1,6 +1,5 @@
 .env
 node_modules
-cursor.txt
+data/
 *.log
-labels.db*
 bun.lockb

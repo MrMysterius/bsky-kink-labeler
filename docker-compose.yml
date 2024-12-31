@@ -2,3 +2,5 @@ services:
   bsky-kink-labeler:
     build: .
     restart: always
+    volumes:
+      - "./data:/app/data"
