@@ -1,6 +1,7 @@
 FROM oven/bun:alpine
 
-RUN apk add nodejs
+RUN apk update
+RUN apk add nodejs npm
 
 RUN mkdir /app /app/data
 WORKDIR /app
