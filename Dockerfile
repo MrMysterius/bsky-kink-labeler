@@ -11,6 +11,6 @@ RUN bun install
 
 COPY . .
 
-RUN chmod +x launch.sh
+EXPOSE 4104
 
 CMD ["bun", "start"]
