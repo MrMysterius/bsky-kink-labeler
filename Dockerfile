@@ -1,6 +1,6 @@
 FROM oven/bun:alpine
 
-RUN apk add nodejs=22.11.0-r1
+RUN apk add nodejs
 
 RUN mkdir /app /app/data
 WORKDIR /app
